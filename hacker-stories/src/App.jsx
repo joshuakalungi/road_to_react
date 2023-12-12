@@ -1,12 +1,17 @@
 import * as React from "react";
 
+
+// variable declaration ------outside the component
+const title = "React";
+
+
 function App(){
-  // variable declaration 
-  const title = "React";
+  // variable declaration -----inside the component
+  // const title = "React";
 
   return (
     <div>
-      <h1>My Hacker Stories</h1>
+      <h1>Hello {title}</h1>
     </div>
   );
 }
