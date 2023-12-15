@@ -41,11 +41,9 @@ const list = [
 ]; 
 
 
-function App(){
+const App =() => (
   // variable declaration -----inside the component
   // const title = "React";
-
-  return (
     <div>
       <h1>{getTitle("React")}</h1>
 
@@ -57,13 +55,13 @@ function App(){
       <List />
       
     </div>
-  );
-}
+);
 
-function List(){
-  return (
+
+const List =() => (
   <ul>
-        {list.map(function (item){
+        { /*using arrow functions in jsx maps */ }
+        {list.map((item) => {
           return (
             <li key={item.objectID}>
               <span>
@@ -75,16 +73,15 @@ function List(){
             </li>);
         })}
       </ul>
-  );
-}
+);
 
-function Search() {
-  return (
+
+const Search =() => (
     <div>
       <label htmlFor="search">Search: </label>
       <input id="search" type="text" />
     </div>
-  );
-}
+);
+
 
 export default App;
