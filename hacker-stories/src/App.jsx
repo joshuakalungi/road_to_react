@@ -14,12 +14,7 @@ import * as React from "react";
 
 
 // function usage in JSX
-function getTitle(title){
-  return title;
-}
-
-
-
+const  getTitle =(title) => title;
 
 
 const App =() => {
@@ -44,12 +39,12 @@ const App =() => {
     },
   ]; 
 
-  
+  console.log("App rendering");
   return(
   // variable declaration -----inside the component
   // const title = "React";
     <div>
-      <h1>{getTitle("React")}</h1>
+      <h1>{getTitle("My Hacker Stories")}</h1>
 
       
       <Search />
@@ -64,18 +59,16 @@ const App =() => {
 
 
 const List = (props) => (
+  console.log("List rendering"),
   <ul>
-        { /*using arrow functions in jsx maps */ }
-        {props.list.map((item) => {
-          return (
-            <Item key={item.objectID} item={ item }/>
-          );
-        })}
-      </ul>
+    {props.list.map((item) => (
+      <Item key={item.objectID} item={item} />
+    ))}
+  </ul>
 );
 
-const Item = (props) => {
-  return (
+const Item = (props) => (
+      console.log("Item rendering"),
       <li>
               <span>
                 <a href={props.item.url}>{props.item.title} </a>
@@ -87,15 +80,14 @@ const Item = (props) => {
       </li>
   );
 
-}
-
 
 const Search =() => {
+  console.log("Search rendering");
 
-  const [ searchTerm, setSearchTerm] = React.useState("");
+  const [ searchTerm, setSearchTerm] = React.useState('');
 
   const handleChange = (event) => {
-    setSearchTerm = event.target.value;
+    setSearchTerm(event.target.value);
     // // synthetic event
     // console.log(event);
     // // value of target (input: HTML element)
@@ -110,6 +102,7 @@ const Search =() => {
       <p>
         Searching for: <strong>{searchTerm}</strong>
       </p>
+
     </div>
 );
 }
