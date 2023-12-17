@@ -61,6 +61,7 @@ const App =() => {
 const List = (props) => (
   console.log("List rendering"),
   <ul>
+    {/* eslint-disable-next-line react/prop-types*/}
     {props.list.map((item) => (
       <Item key={item.objectID} item={item} />
     ))}
@@ -71,10 +72,14 @@ const Item = (props) => (
       console.log("Item rendering"),
       <li>
               <span>
+                {/* eslint-disable-next-line react/prop-types*/}
                 <a href={props.item.url}>{props.item.title} </a>
               </span>
+              {/* eslint-disable-next-line react/prop-types*/}
               <span>{props.item.author} </span>
+              {/* eslint-disable-next-line react/prop-types*/}
               <span>{props.item.num_comments} </span>
+              {/* eslint-disable-next-line react/prop-types*/}
               <span>{props.item.points} </span>
             
       </li>
