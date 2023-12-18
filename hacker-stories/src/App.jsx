@@ -18,6 +18,13 @@ const  getTitle =(title) => title;
 
 
 const App =() => {
+
+  // React Hook
+  const [searchTerm, setSearchTerm] = React.useState("React");
+
+  const handleSearch = (event) =>{
+    setSearchTerm(event.target.value);
+  }
   
   // lists in React
   const stories = [
@@ -39,6 +46,12 @@ const App =() => {
     },
   ]; 
 
+  // filter the stories using the array's filter() function
+  const searchedStories = stories.filter(function(story) {
+    return story.title.includes(searchTerm);
+  });
+
+
   console.log("App rendering");
   return(
   // variable declaration -----inside the component
@@ -47,11 +60,11 @@ const App =() => {
       <h1>{getTitle("My Hacker Stories")}</h1>
 
       
-      <Search />
+      <Search onSearch={handleSearch}/>
 
       <hr />
 
-      <List list={stories} />
+      <List list={searchedStories} />
       
     </div>
 );
@@ -86,28 +99,32 @@ const Item = (props) => (
   );
 
 
-const Search =() => {
+const Search =(props) => {
   console.log("Search rendering");
 
-  const [ searchTerm, setSearchTerm] = React.useState('');
+  // const [ searchTerm, setSearchTerm] = React.useState('');
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    // // synthetic event
-    // console.log(event);
-    // // value of target (input: HTML element)
-    // console.log(event.target.value)
-  }
+  // const handleChange = (event) => {
+  //   setSearchTerm(event.target.value);
+  //   // // synthetic event
+  //   // console.log(event);
+  //   // // value of target (input: HTML element)
+  //   // console.log(event.target.value)
+  //   props.onSearch(event);
+  // }
   
   return(
     <div>
       <label htmlFor="search">Search: </label>
-      <input id="search" type="text" onChange={handleChange} />
-
+      {/*eslint-disable-next-line react/prop-types*/}
+      <input id="search" type="text" onChange={props.onSearch} />
+      {/*
       <p>
         Searching for: <strong>{searchTerm}</strong>
       </p>
 
+      */}
+      
     </div>
 );
 }
