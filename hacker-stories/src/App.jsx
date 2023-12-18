@@ -47,9 +47,7 @@ const App =() => {
   ]; 
 
   // filter the stories using the array's filter() function
-  const searchedStories = stories.filter(function(story) {
-    return story.title.includes(searchTerm);
-  });
+  const searchedStories = stories.filter((story) => story.title.toLowerCase().includes(searchTerm.toLowerCase()));//making filter() case insensitive
 
 
   console.log("App rendering");
