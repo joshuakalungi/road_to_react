@@ -110,12 +110,14 @@ const Search =(props) => {
   //   // console.log(event.target.value)
   //   props.onSearch(event);
   // }
+  // eslint-disable-next-line react/prop-types
+  const { search, onSearch } = props; // destructuring assignment
   
   return(
     <div>
       <label htmlFor="search">Search: </label>
       {/*eslint-disable-next-line react/prop-types*/}
-      <input id="search" type="text" onChange={props.onSearch} value={props.search} />
+      <input id="search" type="text" onChange={onSearch} value={search} />
       {/*
       <p>
         Searching for: <strong>{searchTerm}</strong>
