@@ -75,24 +75,13 @@ const List = ( { list } ) => (
   <ul>
     {/* eslint-disable-next-line react/prop-types*/}
     {list.map((item) => (
-      <Item key={item.objectID} item={item} />
+      <Item key={item.objectID} {...item} />
     ))}
   </ul>
 );
 
 // eslint-disable-next-line react/prop-types
-const Item = ({ item: {
-  // eslint-disable-next-line react/prop-types
-  title,
-  // eslint-disable-next-line react/prop-types
-  url,
-  // eslint-disable-next-line react/prop-types
-  author,
-  // eslint-disable-next-line react/prop-types
-  num_comments,
-  // eslint-disable-next-line react/prop-types
-  points,
-} }) => (
+const Item = ({ title, url, author, num_comments,points }) => (
       console.log("Item rendering"),
       <li>
               <span>
