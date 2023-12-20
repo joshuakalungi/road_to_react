@@ -20,11 +20,17 @@ const  getTitle =(title) => title;
 const App =() => {
 
   // React Hook
-  const [searchTerm, setSearchTerm] = React.useState("React");
+  const [searchTerm, setSearchTerm] = React.useState(localStorage.getItem('search') || "React");
+
+  React.useEffect(() => {
+    localStorage.setItem('search', searchTerm);
+  }, [searchTerm]);
+
 
   const handleSearch = (event) =>{
     setSearchTerm(event.target.value);
   }
+
   
   // lists in React
   const stories = [
@@ -73,9 +79,10 @@ const App =() => {
 const List = ( { list } ) => (
   console.log("List rendering"),
   <ul>
+    {/*spread and rest operators*/}
     {/* eslint-disable-next-line react/prop-types*/}
-    {list.map((item) => (
-      <Item key={item.objectID} {...item} />
+    {list.map(( {objectID, ...item} ) => (
+      <Item key={objectID} {...item} />
     ))}
   </ul>
 );
