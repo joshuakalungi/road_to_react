@@ -69,35 +69,38 @@ const App =() => {
 }
 
 
-const List = (props) => (
+// eslint-disable-next-line react/prop-types
+const List = ( { list } ) => (
   console.log("List rendering"),
   <ul>
     {/* eslint-disable-next-line react/prop-types*/}
-    {props.list.map((item) => (
+    {list.map((item) => (
       <Item key={item.objectID} item={item} />
     ))}
   </ul>
 );
 
-const Item = (props) => (
+// eslint-disable-next-line react/prop-types
+const Item = ({ item }) => (
       console.log("Item rendering"),
       <li>
               <span>
                 {/* eslint-disable-next-line react/prop-types*/}
-                <a href={props.item.url}>{props.item.title} </a>
+                <a href={item.url}>{item.title} </a>
               </span>
               {/* eslint-disable-next-line react/prop-types*/}
-              <span>{props.item.author} </span>
+              <span>{item.author} </span>
               {/* eslint-disable-next-line react/prop-types*/}
-              <span>{props.item.num_comments} </span>
+              <span>{item.num_comments} </span>
               {/* eslint-disable-next-line react/prop-types*/}
-              <span>{props.item.points} </span>
+              <span>{item.points} </span>
             
       </li>
   );
 
 
-const Search =(props) => {
+// eslint-disable-next-line react/prop-types
+const Search =({ search, onSearch }) => {
   console.log("Search rendering");
 
   // const [ searchTerm, setSearchTerm] = React.useState('');
@@ -111,7 +114,7 @@ const Search =(props) => {
   //   props.onSearch(event);
   // }
   // eslint-disable-next-line react/prop-types
-  const { search, onSearch } = props; // destructuring assignment
+  // const { search, onSearch } = props; // destructuring assignment
   
   return(
     <div>
