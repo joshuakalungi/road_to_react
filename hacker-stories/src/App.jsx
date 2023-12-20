@@ -81,19 +81,30 @@ const List = ( { list } ) => (
 );
 
 // eslint-disable-next-line react/prop-types
-const Item = ({ item }) => (
+const Item = ({ item: {
+  // eslint-disable-next-line react/prop-types
+  title,
+  // eslint-disable-next-line react/prop-types
+  url,
+  // eslint-disable-next-line react/prop-types
+  author,
+  // eslint-disable-next-line react/prop-types
+  num_comments,
+  // eslint-disable-next-line react/prop-types
+  points,
+} }) => (
       console.log("Item rendering"),
       <li>
               <span>
                 {/* eslint-disable-next-line react/prop-types*/}
-                <a href={item.url}>{item.title} </a>
+                <a href={url}>{title} </a>
               </span>
               {/* eslint-disable-next-line react/prop-types*/}
-              <span>{item.author} </span>
+              <span>{author} </span>
               {/* eslint-disable-next-line react/prop-types*/}
-              <span>{item.num_comments} </span>
+              <span>{num_comments} </span>
               {/* eslint-disable-next-line react/prop-types*/}
-              <span>{item.points} </span>
+              <span>{points} </span>
             
       </li>
   );
