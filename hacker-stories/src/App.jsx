@@ -58,7 +58,7 @@ const App =() => {
       <h1>{getTitle("My Hacker Stories")}</h1>
 
       
-      <Search onSearch={handleSearch}/>
+      <Search search={searchTerm} onSearch={handleSearch}/>
 
       <hr />
 
@@ -115,7 +115,7 @@ const Search =(props) => {
     <div>
       <label htmlFor="search">Search: </label>
       {/*eslint-disable-next-line react/prop-types*/}
-      <input id="search" type="text" onChange={props.onSearch} />
+      <input id="search" type="text" onChange={props.onSearch} value={props.search} />
       {/*
       <p>
         Searching for: <strong>{searchTerm}</strong>
