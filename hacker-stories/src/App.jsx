@@ -20,11 +20,24 @@ const  getTitle =(title) => title;
 const App =() => {
 
   // React Hook
-  const [searchTerm, setSearchTerm] = React.useState(localStorage.getItem('search') || "React");
+  const [searchTerm, setSearchTerm] = useStorageState("search","React");
 
-  React.useEffect(() => {
-    localStorage.setItem('search', searchTerm);
-  }, [searchTerm]);
+
+  const useStorageState = (key, initialStateValue) => {
+
+    const [value, setValue] = React.useState(localStorage.getItem(key) || initialStateValue);
+
+    React.useEffect(() => {
+      localStorage.setItem(key, value)
+  },  [value, key]);
+
+  return [value, setValue];
+
+}
+
+  // React.useEffect(() => {
+  //   localStorage.setItem('search', searchTerm);
+  // }, [searchTerm]);
 
 
   const handleSearch = (event) =>{
